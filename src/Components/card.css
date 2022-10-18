@@ -1,0 +1,19 @@
+.card {
+    width: 345px;
+    height: 34px;
+    margin: auto;
+    border: 2px solid rebeccapurple;
+    box-shadow: 2px 2px 2px 2px;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: darkslateblue;
+    color: aliceblue;
+}
+
+img, svg {
+    vertical-align: middle;
+    color: seashell;
+    height: 29px;
+    margin-right: auto;
+}
