@@ -1,19 +1,51 @@
 .card {
-    width: 345px;
-    height: 34px;
-    margin: auto;
-    border: 2px solid rebeccapurple;
-    box-shadow: 2px 2px 2px 2px;
-    justify-content: center;
-    margin-top: 8px;
-    padding: 8px;
-    background-color: darkslateblue;
-    color: aliceblue;
+  width: 345px;
+  height: 34px;
+  margin: auto;
+  border: 2px solid rebeccapurple;
+  box-shadow: 2px 2px 2px 2px;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: darkslateblue;
+  color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  align-content: space-around;
 }
 
-img, svg {
-    vertical-align: middle;
-    color: seashell;
-    height: 29px;
-    margin-right: auto;
+img,
+svg {
+  vertical-align: middle;
+  color: seashell;
+  height: 29px;
+  margin-right: 17px;
+}
+
+.edit {
+  margin-left: auto;
+  background-color: indigo;
+
+  height: 29px;
+  font-style: italic;
+  font-family: fantasy;
+
+  border-radius: 5px;
+  box-shadow: inset 0px 2px 5px 3px lightslategrey;
+  border: 1px solid darkslateblue;
+  color: darkseagreen;
+}
+.delete {
+  margin-left: 7px;
+  background-color: indigo;
+
+  height: 29px;
+  font-style: italic;
+  font-family: fantasy;
+
+  border-radius: 5px;
+  box-shadow: inset 0px 2px 5px 3px lightslategrey;
+  border: 1px solid darkslateblue;
+  color: darkseagreen;
 }

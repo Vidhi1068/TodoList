@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   align-items: center;
   border: 5px solid darkcyan;
-  width: 428px;
+  width: 579px;
   box-shadow: 2px 2px 2px 2px darkslateblue;
   margin-top: 43px;
   background-color: darkcyan;
@@ -39,6 +39,6 @@ body {
 
 button:not(:disabled) {
   cursor: pointer;
-    border-radius: 19px;
-    box-shadow: 2px 2px lightslategrey;
+  border-radius: 19px;
+  box-shadow: 2px 2px lightslategrey;
 }

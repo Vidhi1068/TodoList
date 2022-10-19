@@ -8,16 +8,22 @@ export default function Showlist() {
   //sreen holding that user passes on screen if we call state ={state}
   const [state, setState] = useState("");
   const [tasks, setTasks] = useState([]);
+  // const getIn = tasks.indexOf();
+
   //make a array of obj in which user's input store
 
   function Addtask(e) {
     if (!state) {
     } else {
       //task[{}]=user's prevous input + new  one
-      setTasks((prev) => [...prev, { taskName: state }]);
-      console.log(tasks);
-      setState(" ");
+      setTasks((prev) => [
+        ...prev,
+        { id: Math.floor(100000 + Math.random() * 900000), taskName: state },
+      ]);
+      console.log("storing data  in array ",tasks);
+      // console.log("text", getIn);
     }
+    setState(" ");
   }
 
   const onInputChange = (e) => {
@@ -31,19 +37,31 @@ export default function Showlist() {
 
       <div className="taskbtn">
         <input
-          placeholder="write write tasks"
+          value={state}
+          placeholder=" write tasks"
           className="task"
           onChange={(e) => onInputChange(e)}
-        ></input>
+        />
 
         <button type="button" className="btn btn-primary " onClick={Addtask}>
           ADD
         </button>
       </div>
 
-      {tasks.map((el) => {
-        return <Card taskName={el.taskName} OnDelete={OnDelete}/>;
+      {tasks.map((el, id) => {
+        return (
+          <Card
+            data={tasks}
+            key={id}
+            id={id} 
+            setTasks={setTasks}
+            taskName={el.taskName}
+            tasks={tasks}
+            // getIn={getIn}
+          />
+        );
       })}
     </div>
   );
 }
+//
