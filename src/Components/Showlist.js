@@ -6,22 +6,36 @@ import Card from "./Card.js";
 
 export default function Showlist() {
   //sreen holding that user passes on screen if we call state ={state}
+  //make a array of obj in which user's input store
+
   const [state, setState] = useState("");
   const [tasks, setTasks] = useState([]);
-  // const getIn = tasks.indexOf();
-
-  //make a array of obj in which user's input store
+  const [ToggleSubmit, setTogglesubmit] = useState(false);
+  const [Editdata, setEditdata] = useState(null);
+  const [editebaleDataId, setEditdataId] = useState(null);
 
   function Addtask(e) {
     if (!state) {
+      alert("plz enter the data");
+    } else if (state && ToggleSubmit) {
+      setTasks(
+        tasks.map((elem) => {
+          if (elem.id === Editdata) {
+            return { ...elem, taskName: state };
+          }
+          return elem;
+        })
+      );
+
+      setState("");
+      setEditdata(null);
     } else {
-      //task[{}]=user's prevous input + new  one
+      //task[{}]=user's prevous input + id of data +new  data
       setTasks((prev) => [
         ...prev,
         { id: Math.floor(100000 + Math.random() * 900000), taskName: state },
       ]);
-      console.log("storing data  in array ",tasks);
-      // console.log("text", getIn);
+      console.log("storing data  in array ", tasks);
     }
     setState(" ");
   }
@@ -29,6 +43,20 @@ export default function Showlist() {
   const onInputChange = (e) => {
     //when user start to type store it to e.target
     setState(e.target.value);
+  };
+
+  const updateTask = () => {
+    console.log("updateTask");
+
+    setTasks((prev) =>
+      prev.map((el) =>
+        el.id === editebaleDataId
+          ? { id: editebaleDataId, taskName: state }
+          : el
+      )
+    );
+    setTogglesubmit(false);
+    setState(" ");
   };
 
   return (
@@ -42,26 +70,40 @@ export default function Showlist() {
           className="task"
           onChange={(e) => onInputChange(e)}
         />
-
-        <button type="button" className="btn btn-primary " onClick={Addtask}>
-          ADD
-        </button>
+        {!ToggleSubmit ? (
+          <button type="button" className="btn btn-primary " onClick={Addtask}>
+            ADD
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-primary "
+            onClick={updateTask}
+          >
+            UPDATE
+          </button>
+        )}
       </div>
 
-      {tasks.map((el, id) => {
+      {tasks.map((el) => {
         return (
           <Card
-            data={tasks}
-            key={id}
-            id={id} 
+            key={el.id}
             setTasks={setTasks}
             taskName={el.taskName}
             tasks={tasks}
-            // getIn={getIn}
+            id={el.id}
+            singleData={el}
+            state={state}
+            setState={setState}
+            ToggleSubmit={ToggleSubmit}
+            setTogglesubmit={setTogglesubmit}
+            Editdata={Editdata}
+            setEditdata={setEditdata}
+            setEditdataId={setEditdataId}
           />
         );
       })}
     </div>
   );
 }
-//
